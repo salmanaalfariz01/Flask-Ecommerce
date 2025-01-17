@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('register.static', filename='register.css') }}">
+</head>
+
+<body>
+    <form method="POST" action="{{ url_for('register.show') }}" onsubmit="return validateForm()">
+        <h1>Register Syzea Store</h1>
+
+        <input type="text" name="username" class="form-control" placeholder="Username" required>
+        <input type="email" name="email" class="form-control" placeholder="E-Mail" required>
+
+        <!-- Password Field with Inline Checkbox -->
+        <div class="input-container">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+            <label class="show-password-checkbox"><input type="checkbox" onclick="togglePassword()"></label>
+        </div>
+
+        <!-- Confirm Password Field with Inline Checkbox -->
+        <div class="input-container">
+            <input type="password" name="confirm-password" id="confirm-password" class="form-control" placeholder="Confirm Password" required>
+            <label class="show-password-checkbox"><input type="checkbox" onclick="toggleConfirmPassword()"></label>
+        </div>
+
+        <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" required>
+        <input type="text" name="no_hp" class="form-control" placeholder="No. HP" pattern="[0-9]+" title="Hanya angka yang diperbolehkan" required>
+        <textarea name="alamat" class="form-control" placeholder="Alamat" required></textarea>
+
+        <button type="submit">Register</button>
+        <p>Already Registered? <a href="/login"> Click Here</a></p>
+    </form>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            passwordField.type = passwordField.type === "password" ? "text" : "password";
+        }
+
+        function toggleConfirmPassword() {
+            const confirmPasswordField = document.getElementById("confirm-password");
+            confirmPasswordField.type = confirmPasswordField.type === "password" ? "text" : "password";
+        }
+
+        function validateForm() {
+            const inputs = document.querySelectorAll('input[required], textarea[required], select[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    alert(`Field "${input.placeholder || input.name}" harus diisi!`);
+                    return;
+                }
+            });
+
+            const noHpInput = document.querySelector('input[name="no_hp"]');
+            if (noHpInput && !/^\d+$/.test(noHpInput.value)) {
+                isValid = false;
+                alert("No. HP hanya boleh diisi angka!");
+                return;
+            }
+
+            const password = document.querySelector('input[name="password"]').value;
+            const confirmPassword = document.querySelector('input[name="confirm-password"]').value;
+            if (password !== confirmPassword) {
+                isValid = false;
+                alert("Password dan Confirm Password tidak cocok!");
+                return;
+            }
+
+            if (isValid) {
+                alert("Akun Berhasil Di buat!");
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+
+</html>

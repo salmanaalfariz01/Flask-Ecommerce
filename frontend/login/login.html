@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syzea Store - Login</title>
+    <link rel="stylesheet" href="{{ url_for('login.static', filename='login.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Syzea Store</h1>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            
+        <!-- Password Field with Inline Checkbox -->
+        <div class="input-container">
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+            <label class="show-password-checkbox"><input type="checkbox" onclick="togglePassword()"></label>
+        </div>
+            <button type="submit">Login</button>
+            {% if request.args.get('error') %}
+                <p class="error">{{ request.args.get('error') }}</p>
+            {% endif %}
+        </form>
+        <p>Not Registered? <a href="/register"> Click Here</a></p>
+    </div>
+</body>
+<script>
+    function togglePassword() {
+        const passwordField = document.getElementById("password");
+        passwordField.type = passwordField.type === "password" ? "text" : "password";
+    }
+</script>    
+</html>

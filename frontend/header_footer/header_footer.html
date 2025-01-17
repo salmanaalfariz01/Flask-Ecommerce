@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Your Website{% endblock %}</title>
+    <!-- Link CSS Global -->
+    <link rel="stylesheet" href="{{ url_for('header_footer.static', filename='header_footer.css') }}">
+    {% block extra_styles %}{% endblock %}
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <h1 class="logo">Your Store</h1>
+            <nav>
+                <a href="/women_shirts">Women</a>
+                <a href="/men_shirts">Men</a>
+                <a href="/kids_shirts">Kids</a>
+            </nav>
+        </div>
+        <div class="navbar-right">
+            <a href="/cart" class="icon-link">
+                <i class="fa fa-shopping-cart"></i> Cart
+            </a>
+            <a href="/history" class="icon-link">
+                <i class="fas fa-history"></i> History
+            </a>
+            <a href="/delivery" class="icon-link">
+                <i class="fas fa-truck"></i> Delivery
+            </a>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your Store. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>

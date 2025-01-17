@@ -1,0 +1,201 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+main {
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: white;
+    margin-top: 2rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: sticky; /* Bisa diubah ke fixed jika ingin benar-benar tetap */
+    top: 0;
+    z-index: 1000; /* Pastikan header berada di atas elemen lainnya */
+    background-color: #000; /* Warna latar belakang header */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek visual */
+}
+
+.navbar .navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.navbar nav a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar Right */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right .icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.navbar-right .icon-link i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.navbar-right .logout {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #e63946;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar-right .logout:hover {
+    background-color: #d62839;
+}
+
+/* Shirts Container */
+.shirts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Reduced gap between items */
+    justify-content: center;
+}
+
+.shirt-item {
+    background: white;
+    border: 1px solid #000; /* Black border */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    width: 220px; /* Slightly smaller width */
+    height: 430px; /* Reduced height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shirt-item:hover {
+    transform: translateY(-10px); /* Melayang effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.shirt-item h2 {
+    color: #ff6f61;
+    font-size: 1.6rem; /* Smaller font size */
+    margin: 1rem 0;
+}
+
+.shirt-item p {
+    margin: -0.5rem 0;
+    font-size: 0.9rem; /* Smaller font size */
+    color: black;
+}
+
+/* Shirt Image */
+.shirt-image {
+    width: 180px; /* Smaller image size */
+    height: 180px; /* Smaller image size */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto 1rem; /* Center image */
+    transition: transform 0.3s ease;
+}
+
+.shirt-image:hover {
+    transform: scale(1.1);
+}
+
+
+/* Size Options Styling */
+.size-options {
+    display: flex;
+    justify-content: center; /* Pusatkan ukuran */
+    gap: 0.5rem; /* Jarak antar opsi ukuran */
+    margin: 0.5rem 0; /* Jarak atas dan bawah */
+}
+
+.size-option {
+    display: inline-block;
+    padding: 0.4rem 0.8rem; /* Ukuran padding yang proporsional */
+    font-size: 0.9rem; /* Ukuran font untuk opsi ukuran */
+    background-color: white; /* Warna latar putih */
+    border: 1px solid #000; /* Bingkai hitam */
+    border-radius: 5px; /* Sudut melengkung */
+    color: #333; /* Warna teks netral */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.size-option:hover {
+    background-color: green; /* Warna oranye kemerahan saat hover */
+    color: white; /* Teks putih saat hover */
+}
+
+/* Tambahkan gaya untuk opsi dengan stok 0 */
+.size-option.disabled {
+    color: #aaa; /* Warna abu-abu untuk teks */
+    border-color: #ddd; /* Warna bingkai lebih terang */
+    background-color: #f9f9f9; /* Warna latar lebih terang */
+    cursor: not-allowed; /* Cursor menunjukkan tidak bisa diklik */
+}
+
+.size-option.disabled:hover {
+    background-color: #f9f9f9; /* Tetap tidak berubah saat hover */
+    color: #aaa;
+}
+
+/* Buy Option Button */
+.buy-option {
+    display: inline-block;
+    text-align: center; /* Pusatkan teks pada tombol */
+    padding: 0.6rem 1rem; /* Padding yang cukup untuk klik */
+    font-size: 1rem; /* Ukuran font yang jelas */
+    font-weight: bold;
+    color: white; /* Warna teks putih */
+    background-color: black; /* Warna latar tombol */
+    border: none; /* Tanpa bingkai */
+    border-radius: 5px; /* Sudut melengkung */
+    cursor: pointer;
+}
+
+.buy-option:hover {
+    background-color: green;
+}

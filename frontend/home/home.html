@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syzea</title>
+    <!-- Link to Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('home.static', filename='home.css') }}">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <h1 class="logo">Syzea</h1>
+            <nav>
+                <a href="/women_shirts">Women</a>
+                <a href="/men_shirts">Men</a>
+                <a href="/kids_shirts">Kids</a>
+            </nav>
+        </div>
+        <div class="navbar-right">
+            <a href="/cart" class="icon-link">
+                <i class="fa fa-shopping-cart"></i> Cart
+            </a>
+            <a href="/history" class="icon-link">
+                <i class="fas fa-history"></i> History
+            </a>
+            <a href="/delivery" class="icon-link">
+                <i class="fas fa-truck"></i> Delivery
+            </a>
+            <a href="/logout" class="logout">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Welcome to Syzea Store, {{ current_user.username }}!</h2>
+        <div class="social-icons">
+            <!-- Icon Shopee -->
+            <a href="https://shopee.co.id/syzea_factory_outlet" target="_blank" class="icon-link">
+                <i class="fab fa-shopify"></i>
+                <span>Shopee</span>
+            </a>
+            <!-- Icon Facebook -->
+            <a href="https://web.facebook.com/SyzeaFOBekasi/?locale=id_ID&_rdc=1&_rdr#" target="_blank" class="icon-link">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <!-- Icon WhatsApp -->
+            <a href="https://wa.me/08987108218" target="_blank" class="icon-link">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+                    <!-- Icon Instagram -->
+            <a href="https://www.instagram.com/syzea_fo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="icon-link">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <!-- Icon Maps -->
+            <a href="https://www.google.com/maps/place/Syzea+Graha/@-6.1766441,106.993931,17z/data=!3m1!4b1!4m6!3m5!1s0x2e698bd18d9cf43b:0x4f20d4551f5ba14!8m2!3d-6.1766494!4d106.9965059!16s%2Fg%2F11bbrhyykr?entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="icon-link">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Maps</span>
+            </a>
+        </div>
+    </main>
+    
+</body>
+
+</html>

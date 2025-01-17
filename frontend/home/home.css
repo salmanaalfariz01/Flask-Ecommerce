@@ -1,0 +1,123 @@
+/* Reset basic styles */
+body, h1, h2, nav, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+.navbar {
+    position: sticky; /* Bisa diubah ke fixed jika ingin benar-benar tetap */
+    top: 0;
+    z-index: 1000; /* Pastikan header berada di atas elemen lainnya */
+    background-color: #000; /* Warna latar belakang header */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan untuk efek visual */
+}
+
+.navbar .navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.navbar nav a:hover {
+    text-decoration: underline;
+}
+
+/* Navbar Right */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right .icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.navbar-right .icon-link i {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.navbar-right .logout {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #e63946;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.navbar-right .logout:hover {
+    background-color: #d62839;
+}
+
+/* Main content */
+main {
+    text-align: center;
+    padding: 50px;
+    font-size: 24px;
+}
+
+/* Social icons container */
+.social-icons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Jarak antar ikon */
+}
+
+/* Styling untuk link ikon */
+.social-icons .icon-link {
+    text-decoration: none;
+    color: #333; /* Warna default ikon */
+    font-size: 24px; /* Ukuran ikon */
+    display: flex;
+    flex-direction: column; /* Susunan vertikal */
+    align-items: center; /* Ikon dan teks rata tengah */
+    transition: color 0.3s ease, transform 0.3s ease; /* Animasi efek hover */
+}
+
+/* Efek hover untuk ikon */
+.social-icons .icon-link:hover {
+    color: #e63946; /* Warna efek hover */
+    transform: scale(1.1); /* Ikon membesar saat hover */
+}
+
+/* Styling teks di bawah ikon */
+.social-icons .icon-link span {
+    margin-top: 5px;
+    font-size: 14px; /* Ukuran teks */
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('men.static', filename='product_detail/product_detail.css') }}">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="navbar-left">
+        <nav>
+            <a href="/home">Syzea</a>
+            <a href="/women_shirts">Women</a>
+            <a href="/men_shirts">Men</a>
+            <a href="/kids_shirts">Kids</a>
+        </nav>
+    </div>
+    <div class="navbar-right">
+        <a href="/cart" class="icon-link">
+            <i class="fa fa-shopping-cart"></i> Cart
+        </a>
+        <a href="/history" class="icon-link">
+            <i class="fas fa-history"></i> History
+        </a>
+        <a href="/delivery" class="icon-link">
+            <i class="fas fa-truck"></i> Delivery
+        </a>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+</header>
+
+<main>
+    <div class="shirts-container">
+        <!-- Loop data dari Flask -->
+        {% for shirt in product_detail_shirt %}
+            <div class="shirt-item">
+                <!-- Gambar produk -->
+                <a href="{{ url_for('men.serve_image', shirt_id=shirt.shirt_id, id=shirt.id) }}">
+                    <img src="{{ url_for('men.serve_image', shirt_id=shirt.shirt_id, id=shirt.id) }}" alt="Shirt Image" class="shirt-image">
+                </a>
+                <!-- Informasi produk -->
+                <p class="shirt-name">{{ shirt.name }}</p> <!-- Nama -->
+                <p class="shirt-color">{{ shirt.color }}</p> <!-- Warna -->
+                <p class="shirt-price">Rp: {{ "{:,.0f}".format(shirt.price) }}</p>
+                <div class="size-options">
+                    <span class="size-option {% if shirt.size_s == 0 %}disabled{% endif %}">
+                        S{% if shirt.size_s > 0 %} {{ shirt.size_s }}{% else %} 0{% endif %}
+                    </span>
+                    <span class="size-option {% if shirt.size_m == 0 %}disabled{% endif %}">
+                        M{% if shirt.size_m > 0 %} {{ shirt.size_m }}{% else %} 0{% endif %}
+                    </span>
+                    <span class="size-option {% if shirt.size_l == 0 %}disabled{% endif %}">
+                        L{% if shirt.size_l > 0 %} {{ shirt.size_l }}{% else %} 0{% endif %}
+                    </span>
+                    <span class="size-option {% if shirt.size_xl == 0 %}disabled{% endif %}">
+                        XL{% if shirt.size_xl > 0 %} {{ shirt.size_xl }}{% else %} 0{% endif %}
+                    </span>
+                </div>
+                <!-- Tombol beli -->
+                <a class="buy-option">Add Cart</a>
+            </div>
+        {% else %}
+            <p>No shirts available in this category.</p>
+        {% endfor %}
+    </div>
+</main>
+
+<footer>
+    <p>&copy; Syzea. All Rights Reserved.</p>
+</footer>
+
+</body>
+
+</html>
