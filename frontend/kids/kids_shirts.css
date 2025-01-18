@@ -194,6 +194,7 @@ footer {
     border: none; /* Tanpa bingkai */
     border-radius: 5px; /* Sudut melengkung */
     cursor: pointer;
+    text-decoration: none;
 }
 
 .buy-option:hover {

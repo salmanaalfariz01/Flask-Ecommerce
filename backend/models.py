@@ -68,3 +68,14 @@ class ShirtImagesDetail(db.Model):
             f"size_xl={self.size_xl}, "
             f"price={self.price})>"
         )
+
+class Cart(db.Model):
+    __tablename__ = 'cart'
+    id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
+    color = db.Column(db.String, nullable=False)
+    size = db.Column(db.String, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    qty = db.Column(db.Integer, nullable=False)
+    total_price = db.Column(db.Integer, nullable=False)

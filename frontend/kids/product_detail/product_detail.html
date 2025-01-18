@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Detail</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('kids.static', filename='product_detail/product_detail.css') }}">
+    <link rel="stylesheet" href="{{ url_for('kids.static', filename='kids/product_detail/product_detail.css') }}">
 </head>
 
 <body>
@@ -62,11 +62,12 @@
                     </span>
                 </div>
                 <!-- Tombol beli -->
-                <a class="buy-option">Add Cart</a>
+                <button class="buy-option" id="add-to-cart" onclick="addToCart()"> add to cart</button> 
             </div>
         {% else %}
             <p>No shirts available in this category.</p>
         {% endfor %}
+            <!-- Tombol "Add to Cart" -->
     </div>
 </main>
 
@@ -75,5 +76,43 @@
 </footer>
 
 </body>
+<script>
+    function addToCart() {
+        // Dapatkan elemen tombol
+        const button = document.getElementById('add-to-cart');
+        
+        // Tambahkan kelas 'clicked' ke tombol saat diklik
+        button.classList.add('clicked');
+    
+        // Kirim data ke backend
+        const productData = {
+            image: "image_url",
+            name: "shirt_name",
+            color: "shirt_color",
+            size: "shirt_size",
+            price: "shirt_price",
+            qty: 1,
+            total_price: "shirt_total_price"
+        };
+    
+        fetch('http://192.168.100.6:3000/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);
+            } else if (data.error) {
+                alert('Error: ' + data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    
+</script>
 
 </html>

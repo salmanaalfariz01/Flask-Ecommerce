@@ -14,15 +14,6 @@ women = Blueprint(
 login_manager = LoginManager()
 login_manager.init_app(women)
 
-# Fungsi untuk konversi objek Shirt ke dictionary (opsional, untuk debugging)
-def shirt_to_dict(shirt):
-    return {
-        'id': shirt.id,
-        'name': shirt.name,
-        'category': shirt.category,
-        'type': shirt.type
-    }
-
 #Fungsi untuk menyajikan gambar berdasarkan shirt_id dan id 
 @women.route('/serve_image/<int:shirt_id>/<int:id>')
 def serve_image(shirt_id, id):

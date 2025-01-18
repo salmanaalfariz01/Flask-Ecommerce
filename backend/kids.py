@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, jsonify, send_file, make_response, request
-
 from flask_login import LoginManager, login_required
 import io
-from models import db, Shirts, ShirtImagesDetail  # Pastikan Anda mengimpor model yang sesuai
+from cart import cart
+from models import db, Shirts, ShirtImagesDetail, Cart  # Pastikan Anda mengimpor model yang sesuai
 
 # Inisialisasi Blueprint
 kids = Blueprint(
@@ -78,9 +78,6 @@ def show_product_detail_shirt(shirt_name):
 
     except Exception as e:
         return render_template('error.html', error=str(e)), 500
-
-
-
     
 @kids.route('/kids_shirts', methods=['GET'])
 @login_required
@@ -111,5 +108,46 @@ def show_kids_shirts():
     except Exception as e:
         # Tampilkan pesan error di halaman
         return render_template('error.html', error=str(e)), 500
+
+@cart.route('/cart', methods=['POST'])
+@login_required
+def add_to_cart():
+    try:
+        # Ambil data dari request JSON
+        data = request.json
+
+        # Debug: Cetak data yang diterima
+        print("Data received:", data)
+
+        # Ambil data dari JSON
+        image = data.get('image')
+        name = data.get('name')
+        color = data.get('color')
+        size = data.get('size')
+        price = data.get('price')
+        qty = data.get('qty')
+        total_price = data.get('total_price')
+
+        # Validasi data
+        if not all([image, name, color, size, price, qty, total_price]):
+            return jsonify({'error': 'Incomplete data'}), 400
+
+        # Simpan ke database
+        cart_item = Cart(
+            image=image,
+            name=name,
+            color=color,
+            size=size,
+            price=price,
+            qty=qty,
+            total_price=total_price
+        )
+        db.session.add(cart_item)
+        db.session.commit()
+
+        return jsonify({'message': 'Item added to cart successfully'}), 201
+    except Exception as e:
+        print("Error:", str(e))
+        return jsonify({'error': str(e)}), 500
 
 

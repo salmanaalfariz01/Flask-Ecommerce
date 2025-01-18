@@ -12,6 +12,7 @@ from women import women
 from men import men
 from kids import kids
 from header_footer import header_footer
+from cart import cart
 
 app = Flask(__name__, static_folder='../frontend/static')
 
@@ -35,6 +36,8 @@ app.register_blueprint(women)
 app.register_blueprint(men)
 app.register_blueprint(kids)
 app.register_blueprint(header_footer)
+app.register_blueprint(cart)
+
 
 @login_manager.user_loader
 def load_user(user_id):
